@@ -3,4 +3,4 @@ __pycache__
 config.py
 webapp.db
 .DS_Store
-env
+.vscode

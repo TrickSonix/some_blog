@@ -1,20 +1,11 @@
 from flask import Flask
+from config import Config
+from flask_sqlalchemy import SQLAlchemy
+#from flask_migrate import Migrate
 
-from webapp.model import db
+webapp = Flask(__name__)
+webapp.config.from_object(Config)
+db = SQLAlchemy(webapp)
+#migrate = Migrate(webapp, db)
 
-def create_app():
-	app = Flask(__name__)
-	app.config.from_pyfile('config.py')
-	db.init_app(app)
-
-	@app.route('/')
-	def index():
-		"""Возвращает страницу с постами и возможностью производить поиск по ним"""
-		return "Страница с постами"
-
-	@app.route('/admin')
-	def administration():
-		"""Если вход не выполнен, то Форма для входа, иначе Страница для создания и редактирования постов."""
-		return "Вход и редактирование"
-
-	return app
+from webapp import routes, model
