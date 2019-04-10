@@ -7,7 +7,7 @@ class Post(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	title = db.Column(db.String, nullable=False)
 	text = db.Column(db.Text, nullable=True)
-	user_id = db.Column(db.Integer, db.ForeignKey('user.id')))
+	user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 	timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 
 	def __repr__(self):
