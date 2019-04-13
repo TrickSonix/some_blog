@@ -4,3 +4,4 @@ config.py
 webapp.db
 .DS_Store
 .vscode
+*.db
